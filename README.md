@@ -610,7 +610,7 @@ themselves live in `configs/sampling/canonical_25pct.json`.
 We release the **distilled Prov-GigaPath student patch encoder** used to
 produce the sampler input for the Prov-GigaPath rows of Tab. 1:
 
-- **Google Drive:** _coming soon_ <!-- TODO: add Google Drive download link once uploaded -->
+- **Google Drive:** [`distill_step_10000.pt`](https://drive.google.com/file/d/1Z_tgfIVzH8zRWX5r0CSbVyX3AOqe_Aov/view?usp=sharing) (≈495 MB)
 
 Download the `.pt` file and pass it via `--checkpoint` when running
 `scripts/extract_features.sh` (Step 4).
@@ -624,23 +624,38 @@ Download the `.pt` file and pass it via `--checkpoint` when running
 If you find this code useful for your research, please consider citing:
 
 ```bibtex
-@article{TODO_citekey,
+@article{seo2026speculative,
   title   = {Speculative Encoding for Efficient Gigapixel Whole Slide Image Analysis},
-  author  = {TODO: author list},
-  journal = {arXiv preprint arXiv:TODO},
+  author  = {Seo, Hoigi and Bae, Hyewon and Lee, Byung Hyun and Cho, Jaehyun and Lee, Joohoon and Kim, Yonguk and Jeon, Suh Yoon and Jang, Ji Ha and Kim, Hayeon and Chun, Se Young},
+  journal = {arXiv preprint (coming soon)},
   year    = {2026},
 }
 ```
-<!-- TODO: replace with the real arXiv id / author list. -->
+<!-- arXiv id coming soon. -->
 
 ## Acknowledgements
 
-This code builds on several open-source projects:
+This code adapts and builds on several excellent open-source projects:
 
-- TODO: add the works this implementation is based on
+- **MIL aggregators** (DFTD, RRT, WiKG, and others) — adapted from
+  [`mahmoodlab/MIL-Lab`](https://github.com/mahmoodlab/MIL-Lab) and
+  [`mahmoodlab/CLAM`](https://github.com/mahmoodlab/CLAM).
+- **Patch coordinate / tissue extraction** —
+  [`mahmoodlab/CLAM`](https://github.com/mahmoodlab/CLAM) and
+  [`mahmoodlab/TRIDENT`](https://github.com/mahmoodlab/TRIDENT).
+- **CONCH `open_clip_custom`** —
+  [`mahmoodlab/CONCH`](https://github.com/mahmoodlab/CONCH).
 
-We also thank the authors of the pretrained encoders we build on and evaluate
-— TITAN, PRISM, Prov-GigaPath, CONCH / UNI, and Virchow.
+We also build on and evaluate the following pretrained encoders and datasets;
+please cite their original papers and respect their licenses:
+
+- **Foundation models:** CONCH / UNI,
+  TITAN ([`MahmoodLab/TITAN`](https://huggingface.co/MahmoodLab/TITAN)),
+  PRISM ([`paige-ai/Prism`](https://huggingface.co/paige-ai/Prism)) with
+  Virchow ([`paige-ai/Virchow`](https://huggingface.co/paige-ai/Virchow)), and
+  Prov-GigaPath ([`prov-gigapath/prov-gigapath`](https://github.com/prov-gigapath/prov-gigapath)).
+- **Datasets:** CAMELYON16 / CAMELYON17 (<https://camelyon17.grand-challenge.org/>)
+  and TCGA-LUAD / TCGA-LUSC (<https://portal.gdc.cancer.gov/>).
 
 ## License
 
