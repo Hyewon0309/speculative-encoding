@@ -1,0 +1,20 @@
+{
+  "_doc": "Distillation of CONCH v1.5 (MahmoodLab/CONCH, ViT-L/16 + attentional-pool, 768-d). 8 H100 GPUs. Reproduces the CONCH-based MIL row in Tab. 1.",
+  "TEACHER_MODEL": "conchv15",
+  "STUDENT_DIM": "384",
+  "STUDENT_DEPTH": "12",
+  "STUDENT_HEADS": "6",
+  "STUDENT_PATCH_SIZE": "28",
+  "STUDENT_MLP_RATIO": "4.0",
+  "BATCH_SIZE": "1024",
+  "MAX_STEPS": "10000",
+  "LR": "1e-4",
+  "WEIGHT_DECAY": "1e-2",
+  "OPTIMIZER": "adamw8bit",
+  "PRECISION": "fp16",
+  "STRUCTURE_TEMPERATURE": "1.0 0.1",
+  "STRUCTURE_LOSS_WEIGHT": "0.0",
+  "CLS_STRUCTURE_LOSS_WEIGHT": "0.0",
+  "GLOBAL_STRUCTURE_LOSS_WEIGHT": "1.0",
+  "COMPILE": "1"
+}

@@ -1,0 +1,6 @@
+{
+  "_doc": "Uniform-random sampling baseline (Tab. 1 motivation; latency-matched comparisons in App. C). Used by experiments_for_paper/run_random_grid_canonical.sh.",
+  "clustering": "random",
+  "selection_mode": "global",
+  "no_normalize": true
+}

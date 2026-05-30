@@ -1,0 +1,5 @@
+{
+  "_doc": "HP ablation (App. Tab. 6): anchor budget ratio kappa = 0.005.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "ratio": 0.005
+}

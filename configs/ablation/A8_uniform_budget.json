@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A8 (Tab. 4): uniform cluster-wise budget allocation.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "budget_allocation": "uniform"
+}

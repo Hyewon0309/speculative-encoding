@@ -1,0 +1,10 @@
+{
+  "_doc": "Reproduces one row of Tab. 1. Loaded by eval.py via `--config`. Every sampler-side hyperparameter is recorded in the linked --sampling-config; this file pins only the eval-side parameters that don't change across rows. | dataset=CM16, model=titan, baseline @ budget=1.0 (no sampling).",
+  "_paper_artifact": "Tab. 1 \u2014 uncoloured baseline rows",
+  "dataset": "cm16",
+  "model": "titan",
+  "budget": 1.0,
+  "sampling_mode": "random",
+  "n_eval_seeds": 1,
+  "seed": 42
+}

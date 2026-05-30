@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A2 (Tab. 4): single-temperature distillation with Omega={0.1}. Same student/teacher/optimizer as configs/distill/conchv15.json; only structure_temperature changes.",
+  "based_on": "configs/distill/conchv15.json",
+  "STRUCTURE_TEMPERATURE": "0.1"
+}

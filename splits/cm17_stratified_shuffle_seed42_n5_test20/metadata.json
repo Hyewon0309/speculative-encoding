@@ -1,0 +1,53 @@
+{
+  "dataset": "cm17",
+  "mode": "stratified_shuffle",
+  "seed": 42,
+  "n_splits": 5,
+  "test_size": 0.2,
+  "split_desc": "5x stratified 80:20",
+  "split_json": "splits/cm17_stratified_shuffle_seed42_n5_test20.json",
+  "class_names": [
+    "itc",
+    "macro",
+    "micro",
+    "negative"
+  ],
+  "group_field": "patient_id",
+  "folds": [
+    {
+      "fold": 0,
+      "train_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold0_train.csv",
+      "test_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold0_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 1,
+      "train_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold1_train.csv",
+      "test_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold1_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 2,
+      "train_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold2_train.csv",
+      "test_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold2_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 3,
+      "train_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold3_train.csv",
+      "test_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold3_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 4,
+      "train_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold4_train.csv",
+      "test_csv": "splits/cm17_stratified_shuffle_seed42_n5_test20/fold4_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "_doc": "Ablation A6 (Tab. 4): regression-style distillation with a projector head. Disables structure-preserving losses; uses per-token feature MSE + cosine + projector. Sampling step is replaced by features from the regression-distilled student.",
+  "based_on": "configs/distill/conchv15.json",
+  "STRUCTURE_LOSS_WEIGHT": "0.0",
+  "CLS_STRUCTURE_LOSS_WEIGHT": "0.0",
+  "GLOBAL_STRUCTURE_LOSS_WEIGHT": "0.0",
+  "FEAT_LOSS_WEIGHT": "1.0",
+  "CLS_LOSS_WEIGHT": "1.0",
+  "COSINE_LOSS_WEIGHT": "0.5"
+}

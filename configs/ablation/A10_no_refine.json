@@ -1,0 +1,6 @@
+{
+  "_doc": "Ablation A10 (Tab. 4): remove the cluster-boundary refinement stage entirely.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "kmedoid_refine_candidate_size": 0,
+  "margin_swap_refine_passes": 0
+}

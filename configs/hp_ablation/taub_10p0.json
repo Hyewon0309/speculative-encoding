@@ -1,0 +1,5 @@
+{
+  "_doc": "HP ablation (App. Tab. 6): entropy budget-allocation temperature tau_b = 10.0.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "budget_allocation_entropy_temperature": 10.0
+}

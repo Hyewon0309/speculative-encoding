@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A9 (Tab. 4): replace FPS budget filling with random in-cluster sampling.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "add_sample": "random"
+}

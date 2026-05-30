@@ -1,0 +1,47 @@
+{
+  "dataset": "cm16",
+  "mode": "all_stratified_kfold",
+  "split_json": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5.json",
+  "n_splits": 5,
+  "class_names": [
+    "normal",
+    "tumor"
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold0_train.csv",
+      "val_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold0_val.csv",
+      "n_train": 319,
+      "n_val": 80
+    },
+    {
+      "fold": 1,
+      "train_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold1_train.csv",
+      "val_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold1_val.csv",
+      "n_train": 319,
+      "n_val": 80
+    },
+    {
+      "fold": 2,
+      "train_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold2_train.csv",
+      "val_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold2_val.csv",
+      "n_train": 319,
+      "n_val": 80
+    },
+    {
+      "fold": 3,
+      "train_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold3_train.csv",
+      "val_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold3_val.csv",
+      "n_train": 319,
+      "n_val": 80
+    },
+    {
+      "fold": 4,
+      "train_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold4_train.csv",
+      "val_csv": "results_for_paper/shared_splits/cm16_all_stratified_kfold_seed42_n5/fold4_val.csv",
+      "n_train": 320,
+      "n_val": 79
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "dataset": "cm16",
+  "mode": "stratified_shuffle_all_slides",
+  "seed": 42,
+  "n_splits": 5,
+  "test_size": 0.2,
+  "split_desc": "5x stratified 80:20 on all slides",
+  "split_json": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20.json",
+  "class_names": [
+    "normal",
+    "tumor"
+  ],
+  "group_field": null,
+  "folds": [
+    {
+      "fold": 0,
+      "train_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold0_train.csv",
+      "test_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold0_test.csv",
+      "n_train": 319,
+      "n_test": 80
+    },
+    {
+      "fold": 1,
+      "train_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold1_train.csv",
+      "test_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold1_test.csv",
+      "n_train": 319,
+      "n_test": 80
+    },
+    {
+      "fold": 2,
+      "train_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold2_train.csv",
+      "test_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold2_test.csv",
+      "n_train": 319,
+      "n_test": 80
+    },
+    {
+      "fold": 3,
+      "train_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold3_train.csv",
+      "test_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold3_test.csv",
+      "n_train": 319,
+      "n_test": 80
+    },
+    {
+      "fold": 4,
+      "train_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold4_train.csv",
+      "test_csv": "splits/cm16_stratified_shuffle_all_slides_seed42_n5_test20/fold4_test.csv",
+      "n_train": 319,
+      "n_test": 80
+    }
+  ]
+}

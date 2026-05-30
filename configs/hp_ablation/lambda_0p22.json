@@ -1,0 +1,5 @@
+{
+  "_doc": "HP ablation (App. Tab. 6): cluster separation regularizer lambda = 0.22.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "kmedoid_refine_separation_reg": 0.22
+}

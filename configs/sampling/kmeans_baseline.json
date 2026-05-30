@@ -1,0 +1,12 @@
+{
+  "_doc": "k-means clustering baseline (Tab. 1 motivation Tab.). Operates on the full *teacher* features (not distilled) and therefore does not save patch-encoder runtime.",
+  "clustering": "k_means",
+  "selection_mode": "cluster",
+  "ratio": 0.0125,
+  "budget_ratio": 0.25,
+  "add_sample": "fps",
+  "budget_allocation": "uniform",
+  "n_init": 1,
+  "max_iter": 50,
+  "no_normalize": true
+}

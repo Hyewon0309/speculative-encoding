@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A5 (Tab. 4): keep only the distance component (--only_distance).",
+  "based_on": "configs/distill/conchv15.json",
+  "ONLY_DISTANCE": "1"
+}

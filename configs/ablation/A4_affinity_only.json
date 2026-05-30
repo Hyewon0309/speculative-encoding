@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A4 (Tab. 4): keep only the affinity (gram) component of structure / cls_structure / global_structure losses. Maps to --only_affinity in distill_lib/args.py.",
+  "based_on": "configs/distill/conchv15.json",
+  "ONLY_AFFINITY": "1"
+}

@@ -1,0 +1,6 @@
+{
+  "_doc": "Spatial-grid sampling baseline (Tab. 1 motivation; latency-matched comparisons in App. C). Selects every k-th patch by spatial coordinate.",
+  "clustering": "grid",
+  "selection_mode": "global",
+  "no_normalize": true
+}

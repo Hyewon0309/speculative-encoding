@@ -1,0 +1,5 @@
+{
+  "_doc": "HP ablation (App. Tab. 6): refine candidate-set size K_n = 32.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "kmedoid_refine_candidate_size": 32
+}

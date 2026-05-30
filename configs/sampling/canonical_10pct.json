@@ -1,0 +1,18 @@
+{
+  "_doc": "Canonical Speculative-Encoding sampler config used for the 10% budget rows. k-medoid + uncapped fps_seed_global + entropy allocation + knn_mean_margin boundary refinement (cycle-23 leader).",
+  "_paper_section": "Sec. 3.2 (Anchor selection -> Budget filling -> Cluster boundary refinement)",
+  "clustering": "k_medoid",
+  "ratio": 0.005,
+  "budget_ratio": 0.1,
+  "add_sample": "fps_seed_global_cap",
+  "fps_seed_global_cap": 99999,
+  "budget_allocation": "entropy",
+  "budget_allocation_entropy_temperature": 3.0,
+  "n_init": 1,
+  "max_iter": 10,
+  "kmedoid_refine_candidate_size": 16,
+  "kmedoid_refine_candidate_strategy": "knn_mean_margin",
+  "knn_mean_margin_pre_k_mult": 2.0,
+  "kmedoid_refine_separation_reg": 0.22,
+  "no_normalize": true
+}

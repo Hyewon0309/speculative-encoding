@@ -1,0 +1,20 @@
+{
+  "_doc": "Distillation of Prov-GigaPath's patch encoder (prov-gigapath/prov-gigapath, ViT-giant/16, 1536-d). The LongNet slide encoder is NOT trained here. Requires HF_TOKEN.",
+  "TEACHER_MODEL": "provgigapath",
+  "STUDENT_DIM": "768",
+  "STUDENT_DEPTH": "12",
+  "STUDENT_HEADS": "12",
+  "STUDENT_PATCH_SIZE": "16",
+  "STUDENT_MLP_RATIO": "4.0",
+  "BATCH_SIZE": "512",
+  "MAX_STEPS": "10000",
+  "LR": "1e-4",
+  "WEIGHT_DECAY": "1e-2",
+  "OPTIMIZER": "adamw8bit",
+  "PRECISION": "fp16",
+  "STRUCTURE_TEMPERATURE": "1.0 0.1",
+  "STRUCTURE_LOSS_WEIGHT": "0.0",
+  "CLS_STRUCTURE_LOSS_WEIGHT": "0.0",
+  "GLOBAL_STRUCTURE_LOSS_WEIGHT": "1.0",
+  "COMPILE": "1"
+}

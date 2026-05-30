@@ -1,0 +1,20 @@
+{
+  "_doc": "Distillation of PRISM's patch encoder (paige-ai/Virchow, ViT-H/14, 1280-d). The slide encoder is NOT trained here. Requires HF_TOKEN.",
+  "TEACHER_MODEL": "prism",
+  "STUDENT_DIM": "640",
+  "STUDENT_DEPTH": "12",
+  "STUDENT_HEADS": "10",
+  "STUDENT_PATCH_SIZE": "14",
+  "STUDENT_MLP_RATIO": "4.0",
+  "BATCH_SIZE": "512",
+  "MAX_STEPS": "10000",
+  "LR": "1e-4",
+  "WEIGHT_DECAY": "1e-2",
+  "OPTIMIZER": "adamw8bit",
+  "PRECISION": "fp16",
+  "STRUCTURE_TEMPERATURE": "1.0 0.1",
+  "STRUCTURE_LOSS_WEIGHT": "0.0",
+  "CLS_STRUCTURE_LOSS_WEIGHT": "0.0",
+  "GLOBAL_STRUCTURE_LOSS_WEIGHT": "1.0",
+  "COMPILE": "1"
+}

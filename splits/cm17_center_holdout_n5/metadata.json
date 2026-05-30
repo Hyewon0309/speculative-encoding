@@ -1,0 +1,64 @@
+{
+  "dataset": "cm17",
+  "mode": "center_holdout",
+  "split_json": "results_for_paper/shared_splits/cm17_center_holdout_n5.json",
+  "n_splits": 5,
+  "class_names": [
+    "itc",
+    "macro",
+    "micro",
+    "negative"
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "test_center": 0,
+      "train_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold0_train_labels.csv",
+      "test_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold0_test_labels.csv",
+      "train_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold0_train.csv",
+      "test_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold0_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 1,
+      "test_center": 1,
+      "train_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold1_train_labels.csv",
+      "test_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold1_test_labels.csv",
+      "train_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold1_train.csv",
+      "test_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold1_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 2,
+      "test_center": 2,
+      "train_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold2_train_labels.csv",
+      "test_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold2_test_labels.csv",
+      "train_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold2_train.csv",
+      "test_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold2_test.csv",
+      "n_train": 400,
+      "n_test": 99
+    },
+    {
+      "fold": 3,
+      "test_center": 3,
+      "train_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold3_train_labels.csv",
+      "test_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold3_test_labels.csv",
+      "train_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold3_train.csv",
+      "test_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold3_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    },
+    {
+      "fold": 4,
+      "test_center": 4,
+      "train_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold4_train_labels.csv",
+      "test_label_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold4_test_labels.csv",
+      "train_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold4_train.csv",
+      "test_csv": "results_for_paper/shared_splits/cm17_center_holdout_n5/fold4_test.csv",
+      "n_train": 399,
+      "n_test": 100
+    }
+  ]
+}

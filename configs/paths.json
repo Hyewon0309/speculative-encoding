@@ -1,0 +1,40 @@
+{
+  "_comment": "Path configuration. Fill in for your environment, then `source scripts/load_paths.sh configs/paths.json` (or just run eval.py — it auto-loads this file) to export every key as an env var (KEY -> $KEY). Every script and the eval CLI default their paths to these vars.",
+
+  "REPO_ROOT": "${PWD}",
+  "WORKSPACE": "${REPO_ROOT}/..",
+  "PYTHONPATH_PREPEND": "${REPO_ROOT}",
+
+  "PYTHON": "python",
+
+  "WSI_ROOT":               "/path/to/raw_wsi",
+
+  "FEATURE_ROOT":           "/path/to/patch_features/ps512/conch_v1_5",
+  "COORD_ROOT":             "/path/to/patch_coords/ps512",
+  "GIGAPATH_FEATURE_ROOT":  "/path/to/patch_features/ps256/provgigapath",
+  "COORD_DIR_PS256":        "/path/to/patch_coords/ps256",
+  "PRISM_FEATURE_ROOT":     "/path/to/patch_features/ps224/virchow",
+  "COORD_DIR_PS224":        "/path/to/patch_coords/ps224",
+
+  "DISTILL_DATA_DIR":     "/path/to/patch_images/ps512",
+  "DISTILL_OUTPUT_DIR":   "${REPO_ROOT}/outputs/distilled_models",
+  "MLP_PROJECTOR_DIR":    "${REPO_ROOT}/outputs/mlp_projectors",
+  "EVAL_CACHE_DIR":       "${REPO_ROOT}/outputs/eval_cache",
+
+  "DISTILLED_FEATURE_ROOT":         "/path/to/distilled/patch_features/ps512/distilled_cls",
+  "DISTILLED_FEATURE_DIR":          "${DISTILLED_FEATURE_ROOT}/cm16",
+  "DISTILLED_PROJECT_FEATURE_DIR":  "${DISTILLED_FEATURE_ROOT}_project/cm16",
+
+  "CM16_RAW_ROOT":   "/path/to/cm16_raw",
+  "CM17_LABEL_CSV":  "/path/to/cm17/stages.csv",
+
+  "CHECKPOINT_DIR":  "${REPO_ROOT}/outputs/mil_checkpoints/cm16/checkpoints",
+
+  "GIGAPATH_REPO": "${WORKSPACE}/prov-gigapath",
+
+  "HF_HOME":      "${HOME}/.cache/huggingface",
+  "HF_HUB_CACHE": "${HF_HOME}/hub",
+  "_HF_TOKEN_HINT": "Set HF_TOKEN to download gated HF repos (MahmoodLab/TITAN, paige-ai/Prism, paige-ai/Virchow, prov-gigapath/prov-gigapath).",
+
+  "WANDB": "0"
+}

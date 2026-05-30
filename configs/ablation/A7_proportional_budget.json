@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A7 (Tab. 4): proportional cluster-wise budget allocation instead of entropy-based.",
+  "based_on": "configs/sampling/canonical_25pct.json",
+  "budget_allocation": "proportional"
+}

@@ -1,0 +1,5 @@
+{
+  "_doc": "Ablation A3 (Tab. 4): single-temperature distillation with Omega={1.0}.",
+  "based_on": "configs/distill/conchv15.json",
+  "STRUCTURE_TEMPERATURE": "1.0"
+}

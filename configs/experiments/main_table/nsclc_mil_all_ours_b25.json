@@ -1,0 +1,18 @@
+{
+  "_doc": "Reproduces one row of Tab. 1. Loaded by eval.py via `--config`. Every sampler-side hyperparameter is recorded in the linked --sampling-config; this file pins only the eval-side parameters that don't change across rows. | dataset=NSCLC, model=mil_all, +Ours @ budget=0.25.",
+  "_paper_artifact": "Tab. 1",
+  "dataset": "nsclc",
+  "model": "mil_all",
+  "budget": 0.25,
+  "sampling_mode": "custom",
+  "sampling_config": "configs/sampling/main_table/nsclc_mil.json",
+  "n_eval_seeds": 1,
+  "seed": 42,
+  "checkpoint_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}
