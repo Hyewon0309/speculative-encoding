@@ -1,7 +1,14 @@
 # Speculative Encoding for Efficient Gigapixel Whole Slide Image Analysis
 
-Reference implementation for *"Speculative Encoding for Efficient Gigapixel
-Whole Slide Image Analysis"*. Reproduces every cell of the paper's main table
+Official repository of the paper *'Speculative Encoding for Efficient Gigapixel Whole Slide Image Analysis'*
+
+by Hoigi Seo<sup>\*</sup>, [Hyewon Bae](https://www.linkedin.com/in/hyewon-bae-05865a260)<sup>\*</sup>, Byung Hyun Lee<sup>\*</sup>, Jaehyun Cho, Joohoon Lee, Yonguk Kim, [Suh Yoon Jeon](https://www.linkedin.com/in/suhyoonjeon), Ji Ha Jang, Hayeon Kim, and [Se Young Chun](https://icl.snu.ac.kr/pi)<sup>†</sup>.
+
+<sup>\*</sup> Equal contribution. &nbsp; <sup>†</sup> Corresponding author.
+
+Link: arXiv (coming soon)
+
+Reference implementation reproducing every cell of the paper's main table
 (Tab. 1) on **CAMELYON16 (CM16)**, **CAMELYON17 (CM17)** and **TCGA-NSCLC**,
 across **9 MIL aggregators** and **3 slide-level foundation models** (TITAN,
 PRISM, Prov-GigaPath, plus a Prov-GigaPath full-finetune row).
@@ -619,11 +626,26 @@ Download the `.pt` file and pass it via `--checkpoint` when running
 > due to the upstream teacher-model licenses. They can be reproduced with the
 > from-scratch pipeline above (Step 3) given access to the gated teachers.
 
-## Citation
+## Citations
 
-If you find this code useful for your research, please consider citing:
+This code is heavily based on
+- [`mahmoodlab/CLAM`](https://github.com/mahmoodlab/CLAM) and [`mahmoodlab/TRIDENT`](https://github.com/mahmoodlab/TRIDENT) — patch-coordinate / tissue extraction and MIL baselines.
+- [`mahmoodlab/MIL-Lab`](https://github.com/mahmoodlab/MIL-Lab) — MIL aggregators (DFTD, RRT, WiKG, and others).
+- [`mahmoodlab/CONCH`](https://github.com/mahmoodlab/CONCH) — the `open_clip_custom` CONCH implementation.
 
-```bibtex
+We also build on and evaluate the following pretrained encoders and datasets;
+please cite their original papers and respect their licenses: CONCH / UNI,
+TITAN ([`MahmoodLab/TITAN`](https://huggingface.co/MahmoodLab/TITAN)),
+PRISM ([`paige-ai/Prism`](https://huggingface.co/paige-ai/Prism)) with
+Virchow ([`paige-ai/Virchow`](https://huggingface.co/paige-ai/Virchow)),
+Prov-GigaPath ([`prov-gigapath/prov-gigapath`](https://github.com/prov-gigapath/prov-gigapath)),
+CAMELYON16 / CAMELYON17 (<https://camelyon17.grand-challenge.org/>), and
+TCGA-LUAD / TCGA-LUSC (<https://portal.gdc.cancer.gov/>).
+
+## bibTeX
+
+If our code is helpful for your research, please consider citing
+```
 @article{seo2026speculative,
   title   = {Speculative Encoding for Efficient Gigapixel Whole Slide Image Analysis},
   author  = {Seo, Hoigi and Bae, Hyewon and Lee, Byung Hyun and Cho, Jaehyun and Lee, Joohoon and Kim, Yonguk and Jeon, Suh Yoon and Jang, Ji Ha and Kim, Hayeon and Chun, Se Young},
@@ -631,31 +653,6 @@ If you find this code useful for your research, please consider citing:
   year    = {2026},
 }
 ```
-<!-- arXiv id coming soon. -->
-
-## Acknowledgements
-
-This code adapts and builds on several excellent open-source projects:
-
-- **MIL aggregators** (DFTD, RRT, WiKG, and others) — adapted from
-  [`mahmoodlab/MIL-Lab`](https://github.com/mahmoodlab/MIL-Lab) and
-  [`mahmoodlab/CLAM`](https://github.com/mahmoodlab/CLAM).
-- **Patch coordinate / tissue extraction** —
-  [`mahmoodlab/CLAM`](https://github.com/mahmoodlab/CLAM) and
-  [`mahmoodlab/TRIDENT`](https://github.com/mahmoodlab/TRIDENT).
-- **CONCH `open_clip_custom`** —
-  [`mahmoodlab/CONCH`](https://github.com/mahmoodlab/CONCH).
-
-We also build on and evaluate the following pretrained encoders and datasets;
-please cite their original papers and respect their licenses:
-
-- **Foundation models:** CONCH / UNI,
-  TITAN ([`MahmoodLab/TITAN`](https://huggingface.co/MahmoodLab/TITAN)),
-  PRISM ([`paige-ai/Prism`](https://huggingface.co/paige-ai/Prism)) with
-  Virchow ([`paige-ai/Virchow`](https://huggingface.co/paige-ai/Virchow)), and
-  Prov-GigaPath ([`prov-gigapath/prov-gigapath`](https://github.com/prov-gigapath/prov-gigapath)).
-- **Datasets:** CAMELYON16 / CAMELYON17 (<https://camelyon17.grand-challenge.org/>)
-  and TCGA-LUAD / TCGA-LUSC (<https://portal.gdc.cancer.gov/>).
 
 ## License
 
