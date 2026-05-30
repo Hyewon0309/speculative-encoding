@@ -63,70 +63,13 @@ export GIGAPATH_SLIDE_CKPT=/path/to/slide_encoder.pth
 
 ### TITAN performance patch (recommended)
 
-The HuggingFace-shipped `vision_transformer.py` for `MahmoodLab/TITAN`
-computes its ALiBi position bias with NumPy on the CPU per slide, which
-becomes the dominant cost when running TITAN at small patch budgets.
-Replacing the body of `get_alibi(...)` with a GPU-resident
-`torch.meshgrid` + `torch.cdist` version restores the expected speedup
-from Speculative Encoding.
-
-Locate the file (the snapshot hash changes when MahmoodLab updates the repo):
-
-```bash
-TITAN_VT=$(python -c "from huggingface_hub import snapshot_download; \
-import os; p = snapshot_download('MahmoodLab/TITAN'); \
-print(os.path.join(p, 'vision_transformer.py'))")
-echo "$TITAN_VT"
-```
-
-Replace the body of `get_alibi` with the GPU version:
-
-```python
-def get_alibi(self, w, h, bg_mask=None):
-    device = next(self.parameters()).device
-
-    x, y = torch.meshgrid(
-        torch.arange(w, device=device),
-        torch.arange(h, device=device),
-        indexing='ij',
-    )
-    if bg_mask is not None:
-        _mask = bg_mask.squeeze(0).bool()          # stay on GPU
-        x = x[_mask]
-        y = y[_mask]
-    points = torch.stack([x.ravel(), y.ravel()], dim=1).float()  # (n, 2)
-
-    # Pairwise Euclidean distances on GPU.
-    dists = torch.cdist(points.unsqueeze(0), points.unsqueeze(0)).squeeze(0)  # (n, n)
-
-    def get_slopes(n):
-        if math.log2(n).is_integer():
-            p = 2 ** (-2 ** -(math.log2(n) - 3))
-            return [p * (p ** i) for i in range(n)]
-        nearest_power_of_2 = 2 ** math.floor(math.log2(n))
-        base_slopes = get_slopes(nearest_power_of_2)
-        if nearest_power_of_2 == n:
-            return base_slopes
-        extra_slopes = get_slopes(2 * nearest_power_of_2)[0::2][:n - nearest_power_of_2]
-        return base_slopes + extra_slopes
-
-    slopes = torch.tensor(
-        get_slopes(self.num_heads), dtype=torch.float32, device=device,
-    ).view(self.num_heads, 1, 1)
-    n_patches = dists.shape[-1]  # w*h or bg_mask.sum()
-    bias_matrix = dists.unsqueeze(0) * slopes * -1  # (num_heads, n, n)
-    embed_len = n_patches + 1
-    all_bias = torch.zeros(1, self.num_heads, embed_len, embed_len, device=device)
-    all_bias[:, :, 1:, 1:] = bias_matrix
-    return all_bias
-```
-
-Behaviour-preserving rewrite — only the device of the computation
-changes. Required to reproduce the TITAN latency numbers in Tab. 1;
-without it the TITAN forward time is dominated by the NumPy ALiBi build
-rather than the transformer pass itself. The patch lives in the
-HuggingFace cache, so it must be re-applied if you clear the cache or
-the upstream snapshot hash changes.
+`MahmoodLab/TITAN`'s shipped `vision_transformer.py` builds its ALiBi
+position bias with NumPy on the CPU per slide, which dominates runtime at
+small patch budgets. For the paper's TITAN latency numbers, rewrite the body
+of `get_alibi(...)` to compute the bias on-GPU (`torch.meshgrid` +
+`torch.cdist`) — a behaviour-preserving change. The file lives in the
+HuggingFace cache (`snapshot_download('MahmoodLab/TITAN')`), so re-apply it
+after clearing the cache or when the upstream snapshot hash changes.
 
 ### External dependencies
 
@@ -539,78 +482,6 @@ speculative_encoding/
 ```
 
 ---
-
-## Reproducing Tab. 1 — main results
-
-`eval.py` is the only entry point you need. The flow is two steps:
-
-1. **One-off**: train the 9 MIL aggregators per dataset and save per-fold
-   checkpoints. *Skip if you only run TITAN / PRISM / Prov-GigaPath rows.*
-
-   ```bash
-   bash scripts/train_mil_checkpoints.sh --dataset cm16
-   bash scripts/train_mil_checkpoints.sh --dataset cm17
-   bash scripts/train_mil_checkpoints.sh --dataset nsclc
-   ```
-
-   Outputs go to `outputs/mil_checkpoints/<dataset>/checkpoints/<arch>_fold<N>_best.pt`.
-   Hyperparameters (`train_epoch=30 lr=1e-4 wd=1e-5 eval_interval=5`) are the
-   paper defaults; override via `TRAIN_EPOCH=… LR=… WD=…`.
-
-2. **Per cell**: pick an experiment config and run.
-
-   ```bash
-   python eval.py --config configs/experiments/main_table/cm16_mil_all_ours_b25.json \
-                  --checkpoint-dir outputs/mil_checkpoints/cm16/checkpoints
-   python eval.py --config configs/experiments/main_table/cm16_titan_ours_b25.json
-   python eval.py --config configs/experiments/main_table/cm16_prism_ours_b25.json
-   python eval.py --config configs/experiments/main_table/cm16_gigapath_ours_b25.json
-   ```
-
-The 24 ready-made experiment configs cover every cell of Tab. 1:
-
-```
-configs/experiments/main_table/
-├── {cm16,cm17,nsclc}_mil_all_ours_b25.json         # 9 MIL × 3 datasets, +Ours
-├── {cm16,cm17,nsclc}_titan_ours_b25.json
-├── {cm16,cm17,nsclc}_prism_ours_b25.json
-├── {cm16,cm17,nsclc}_gigapath_ours_b25.json
-└── {cm16,cm17,nsclc}_<model>_baseline_b100.json    # full-bag (uncoloured) rows
-```
-
-Each `_ours_b25.json` references a **per-track sampler config** under
-`configs/sampling/main_table/` whose hyperparameters are pinned exactly (see *Hyperparameter provenance*
-below).
-
-## Reproducing other tables and figures
-
-`eval.py` is general — change the sampler config or `--sampling-mode` to
-reproduce the rest:
-
-| Paper artefact | How to reproduce |
-| --- | --- |
-| **Tab. 1** (main_table) | `eval.py --config configs/experiments/main_table/<row>.json` |
-| **Tab. 2** (random / grid / k-means motivation) | `eval.py --dataset cm16 --model abmil --budget 0.25 --sampling-mode {random,grid,k_means} --checkpoint-dir <DIR>` |
-| **Tab. 4** (ablation A2..A10) | `eval.py --dataset cm16 --model titan --budget 0.25 --sampling-config configs/ablation/A6_regression_distillation.json` |
-| **Tab. 6** (HP ablation) | `eval.py … --sampling-config configs/hp_ablation/kappa_0p01.json` |
-| **App. C Tab. 5** (latency-matched random/grid) | `eval.py --sampling-mode {random,grid} --budget …` |
-
-> **Tab. 3 (MLLM application)** uses the WSI-LLaVA decoder pipeline which depends
-> on internal infrastructure not part of this public release.
->
-> **Fig. 1 / Fig. 5 (raw-WSI latency, peak-memory)** numbers were measured with
-> the patch-encoder pipeline that reads ``.svs`` files via OpenSlide-backed
-> internal tooling; that benchmark is also not shipped here. The latency
-> reported in Tab. 1 (the ``Latency`` / ``Speed-up`` columns) is reproducible
-> from ``eval.py`` outputs — every runner records ``selection_time`` /
-> ``gpu_time`` / ``latency`` per fold in its summary JSON.
-
-## Hyperparameter provenance
-
-Every sampler hyperparameter used to produce a Tab. 1 cell is pinned in
-`configs/sampling/main_table/<dataset>_<encoder>.json` — one file per row
-whose sampler differs from the canonical recipe. The canonical defaults
-themselves live in `configs/sampling/canonical_25pct.json`.
 
 ## Pretrained models
 
